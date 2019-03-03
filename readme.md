@@ -1,4 +1,4 @@
-#Ocamlapi
+# Ocamlapi
 
 Ocamlapi is an Ocaml library for path-based routing of HTTP requests.
 
@@ -6,7 +6,7 @@ It is built on top of [Cohttp](https://github.com/mirage/ocaml-cohttp).
 
 ## Libraries
 
-Okapi ships with 4 libraries:
+Ocamlapi ships with 4 libraries:
 
 * ocamlapi: Base module for the library.
 * ocamlapi_async: Use ocamlapi with the `Cohttp-async` backend.
