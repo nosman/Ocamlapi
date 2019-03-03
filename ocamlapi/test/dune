@@ -1,0 +1,9 @@
+(executable
+  (name ocamlapi_test)
+  (libraries ounit ocamlapi)
+)
+
+(alias
+  (name    runtest)
+  (package ocamlapi)
+  (action  (run ./ocamlapi_test.exe)))

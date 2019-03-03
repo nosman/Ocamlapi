@@ -1,0 +1,17 @@
+opam-version: "1.2"
+maintainer: "stephanos.tsoucas@gmail.com"
+authors: ["Stephanos Tsoucas"]
+license: "Apache-2.0"
+homepage: ""
+bug-reports: ""
+dev-repo: "https://github.com/nosman/Ocamlapi.git"
+version: "0.0.1"
+build: [
+  [ "dune" "build" "-p" name "-j" jobs ]
+]
+available: [ ocaml-version >= "4.04" ]
+depends: [
+    "dune"
+    "ocamlapi"
+    "cohttp-async"
+]
