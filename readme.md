@@ -2,6 +2,8 @@
 
 Ocamlapi is an Ocaml library for path-based routing of HTTP requests.
 
+Full documentation is available [here](https://nosman.github.io/Ocamlapi/).
+
 It is built on top of [Cohttp](https://github.com/mirage/ocaml-cohttp).
 
 ## Libraries
