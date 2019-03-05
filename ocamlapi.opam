@@ -1,19 +1,20 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "stephanos.tsoucas@gmail.com"
 authors: ["Stephanos Tsoucas"]
 license: "Apache-2.0"
-homepage: ""
+synopsis: "Path-based HTTP request routing for Ocaml"
+homepage: "https://github.com/nosman/Ocamlapi"
 version: "0.0.1"
-bug-reports: ""
-dev-repo: "https://github.com/nosman/Ocamlapi.git"
+bug-reports: "https://github.com/nosman/Ocamlapi/issues"
+dev-repo: "git+https://github.com/nosman/Ocamlapi.git"
 build: [
   [ "dune" "build" "-p" name "-j" jobs ]
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-available: [ ocaml-version >= "4.04" ]
 depends: [
-    "dune"
-    "core"
-    "re2"
-    "cohttp"
+  "ocaml" {>= "4.04"}
+  "dune"
+  "core"
+  "re2"
+  "cohttp"
 ]
