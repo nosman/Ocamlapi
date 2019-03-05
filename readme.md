@@ -10,7 +10,7 @@ Ocamlapi ships with 4 libraries:
 
 * ocamlapi: Base module for the library.
 * ocamlapi_async: Use ocamlapi with the `Cohttp-async` backend.
-* ocamlapi_lwt_unix: Use Okapi with the `Cohttp-lwt-unix` backend.
+* ocamlapi_lwt_unix: Use ocamlapi with the `Cohttp-lwt-unix` backend.
 * ocamlapi_ppx: Syntax extensions. These eliminate boilerplate when creating routes.
 
 ## Getting Started

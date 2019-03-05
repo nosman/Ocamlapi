@@ -59,10 +59,16 @@ module type Router = sig
 
     include Router_types
 
-    (** When a request matches a route, a [callback] is called on  *)
+    (** A function of this type is called whenever a request matches a route.
+        The vars argument is a table where the keys are the variable names declared in dynamic path segments,
+        and the values are their values as appearing in the route that this request matched against. 
+        
+        For example, if a request made to the path ["/user/david"] matches against a route ["/user/<name>"], then the corresponding callback
+        will be given a [vars] with a single key ["name"], and the associated value will be ["david"].
+        *)
     type callback = ?vars: string String.Table.t -> req -> body -> (resp * body) io 
     
-    (** This type is used *)
+    (** A function of this type is called whenever a callback throws an exception. *)
     type exn_handler = ?vars:string Core.String.Table.t -> exn -> (resp * body) io
     
     (** Represents a url path with a list of supported http methods. *)
