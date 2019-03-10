@@ -19,3 +19,10 @@ depends: [
   "re2"
   "cohttp"
 ]
+
+url {
+archive: "https://github.com/nosman/Ocamlapi/archive/0.0.1.tar.gz"
+checksum: "4df1237f40355ff92cf553d0c70fa631"
+}
+
+
