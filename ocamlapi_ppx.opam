@@ -14,7 +14,7 @@ build: [
 depends: [
   "ocaml" {>= "4.04"}
   "dune" {build}
-  "ocamlapi.0.0.1"
+  "ocamlapi"
   "core"
   "ppxlib"
 ]
