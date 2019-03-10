@@ -13,7 +13,7 @@ build: [
 ]
 depends: [
   "ocaml" {>= "4.04"}
-  "ounit" {with-test}
+  "ounit"
   "dune" {build}
   "core"
   "re2"
