@@ -12,7 +12,7 @@ build: [
 ]
 depends: [
   "ocaml" {>= "4.04"}
-  "dune"
-  "ocamlapi"
+  "dune" {build}
+  "ocamlapi.0.0.1"
   "cohttp-async"
 ]
