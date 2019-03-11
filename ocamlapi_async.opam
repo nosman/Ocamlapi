@@ -6,7 +6,7 @@ synopsis: "Path-based HTTP request routing for Ocaml"
 homepage: "https://github.com/nosman/Ocamlapi"
 bug-reports: "https://github.com/nosman/Ocamlapi/issues"
 dev-repo: "git+https://github.com/nosman/Ocamlapi.git"
-version: "0.0.1"
+version: "0.0.2"
 build: [
   [ "dune" "build" "-p" name "-j" jobs ]
 ]
@@ -16,8 +16,7 @@ depends: [
   "ocamlapi"
   "cohttp-async"
 ]
-
 url {
-archive: "https://github.com/nosman/Ocamlapi/archive/0.0.1.tar.gz"
-checksum: "4df1237f40355ff92cf553d0c70fa631"
+archive: "https://github.com/nosman/Ocamlapi/archive/0.0.2.tar.gz"
+checksum: "e1e7e9018092d9528c5ae60ef01e5246"
 }
