@@ -32,7 +32,7 @@ open Ocamlapi_async
 
 (* Declare a route *)
 let greeting_route =
-    "/<name>/greet"
+    "/<name>/greet",
     [`GET, fun args _request _body ->
                 Rule.RouteArgSet.find_exn args "name"
                 |> Printf.sprintf "Hello, %s!"
