@@ -31,18 +31,18 @@ open Cohttp_async
 open Ocamlapi_async
 
 (* Declare a route *)
-let greeting_route = Ocamlapi_router.Route.create
-                     "/<name>/greet"
-                    [`GET, fun args _request _body ->
-                           Rule.RouteArgSet.find_exn args "name"
-                           |> Printf.sprintf "Hello, %s!"
-                           |> Server.respond_string ]
+let greeting_route =
+    "/<name>/greet"
+    [`GET, fun args _request _body ->
+                Rule.RouteArgSet.find_exn args "name"
+                |> Printf.sprintf "Hello, %s!"
+                |> Server.respond_string ]
 
 let exn_handler _ =
     Server.respond_string ~status:(`Code 500) "Internal server error"
 
 (* Declare the router *)
-let r = Ocamlapi_router.create [ greeting_route ] exn_handler
+let r = Ocamlapi_router.create_exn [ greeting_route ] exn_handler
 
 let handler ~body:b _sock req =
     (* Dispatch a request to a route *)

@@ -1,1 +1,1 @@
-This directory contains examples on how to use Ocapi.
+This directory contains examples on how to use Ocamlapi.
