@@ -19,13 +19,15 @@ Ocamlapi has 4 separately installable libraries:
 
 Each library is installable through [opam](https://opam.ocaml.org/):
 
-EG. to install `ocamlapi_async`, run `opam install ocamlapi_async`.
+Eg. to install `ocamlapi_async`, run `opam install ocamlapi_async`.
 
 ## Getting Started
 
 Ocamlapi allows the user to build routers, which bind callbacks to URLs.
 When a request is received by the server, a router is used to dispatch the request to
 the appropriate callback.
+
+For quick examples to get started, consult the (examples directory)[https://github.com/nosman/Ocamlapi/tree/master/example].
 
 ### URL templates
 
