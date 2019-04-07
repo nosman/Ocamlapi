@@ -42,7 +42,7 @@ A few examples of URL templates:
     This matches against the literal string `/api/version`
 
 `/users/<userId>`
-    This matches agasint strings such as `/users/sam`.
+    This matches against strings such as `/users/sam`.
     It does not match against strings such as `/users/sam/history`.
 
 `/users/<userId>/profile`
