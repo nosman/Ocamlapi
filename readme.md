@@ -66,7 +66,7 @@ This map's keys are the names of the dynamic path segments in the URL template t
 The corresponding values are the values that were extracted from the request's path.
 
 For example, if a route is declared as
-`"/user/<userId>", [ `GET, some_callback]`
+``"/user/<userId>", [ `GET, some_callback]``
 and a GET request is made to the path `"/user/sam"`, the map given to the callback will have a single key,
 `"userId"`, and its value will be `"sam"`.
 
