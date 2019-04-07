@@ -27,7 +27,7 @@ Ocamlapi allows the user to build routers, which bind callbacks to URLs.
 When a request is received by the server, a router is used to dispatch the request to
 the appropriate callback.
 
-For quick examples to get started, consult the (examples directory)[https://github.com/nosman/Ocamlapi/tree/master/example].
+For quick examples to get started, consult the [examples directory](https://github.com/nosman/Ocamlapi/tree/master/example).
 
 ### URL templates
 
