@@ -1,20 +1,14 @@
 open Async
 open Core
-open Cohttp
-open Cohttp.Request
 open Cohttp_async
-open Ocamlapi_async 
 
-let exn_handler _ =
+let exn_handler ?vars:_ _ =
         Server.respond_string ~status:(`Code 500) "Internal server error" 
 
-let%router r = [ Counter_routes ], exn_handler
+let r = Ocamlapi_async.create_from_modules_exn ~exn_handler:exn_handler [ (module Counter_routes) ]
 
 let handler ~body:b _sock req =
-    Ocamlapi_router.dispatch r req b
-    |> function
-       | Some resp -> resp
-       | None -> Server.respond_string ~status:(`Code 404) "404 not found"
+    Ocamlapi_async.dispatch r req b
 
 let start_server port () =
     eprintf "Listening for HTTP on port %d\n" port;

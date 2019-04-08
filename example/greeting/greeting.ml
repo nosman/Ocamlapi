@@ -1,25 +1,21 @@
 open Async
 open Core
 open Cohttp_async
-open Ocamlapi_async 
 
-let exn_handler _ =
+let exn_handler ?vars:_ _ =
         Server.respond_string ~status:(`Code 500) "Internal server error" 
 
-let greeting_route = Ocamlapi_router.Route.create
-                     "/<name>/greet"
-                    [`GET, fun args _request _body ->
-                           Rule.RouteArgSet.find_exn args "name"
-                           |> Printf.sprintf "Hello, %s!"
-                           |> Server.respond_string ]
+let greeting_route =
+    "/<name>/greet",
+    [`GET, fun ?vars:(vars=String.Table.create ()) _request _body ->
+                String.Table.find_exn vars "name"
+                |> Printf.sprintf "Hello, %s!"
+                |> Server.respond_string ]
 
-let r = Ocamlapi_router.create [ greeting_route ] exn_handler
+let r = Ocamlapi_async.create_exn ~exn_handler:exn_handler [ greeting_route ] 
 
 let handler ~body:b _sock req =
-    Ocamlapi_router.dispatch r req b
-    |> function
-       | Some resp -> resp
-       | None -> Server.respond_string ~status:(`Code 404) "404 not found"
+    Ocamlapi_async.dispatch r req b
 
 let start_server port () =
     eprintf "Listening for HTTP on port %d\n" port;
