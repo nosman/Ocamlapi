@@ -105,28 +105,28 @@ Here is an example of a server that supports a single GET operation on the path:
 `/<name>/greet`:
 
 ```ocaml
+
 open Async
 open Core
 open Cohttp_async
-open Ocamlapi_async
 
-(* Declare a route *)
+let exn_handler ?vars:_ _ =
+        Server.respond_string ~status:(`Code 500) "Internal server error"
+
+(* Create a route *)
 let greeting_route =
     "/<name>/greet",
-    [`GET, fun args _request _body ->
-                Rule.RouteArgSet.find_exn args "name"
+    [`GET, fun ?vars:(vars=String.Table.create ()) _request _body ->
+                String.Table.find_exn vars "name"
                 |> Printf.sprintf "Hello, %s!"
                 |> Server.respond_string ]
 
-let exn_handler _ =
-    Server.respond_string ~status:(`Code 500) "Internal server error"
+(* Create the router *)
+let r = Ocamlapi_async.create_exn ~exn_handler:exn_handler [ greeting_route ]
 
-(* Declare the router *)
-let r = Ocamlapi_router.create_exn [ greeting_route ] exn_handler
-
+(* When the server recieves a request, dispatch it to the callback using the router *)
 let handler ~body:b _sock req =
-    (* Dispatch a request to a route *)
-    Ocamlapi_router.dispatch r req b
+    Ocamlapi_async.dispatch r req b
 
 let start_server port () =
     eprintf "Listening for HTTP on port %d\n" port;
