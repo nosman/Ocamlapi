@@ -97,7 +97,7 @@ Finally, the list of routes defines what routes a router will respond to.
 
 The `dispatch` function takes a router and a request, and routes the request to the appropriate callback.
 
-### Using vanilla Ocamlapi
+### An example
 
 We will use `Ocamlapi_async` for this introduction.
 
@@ -151,47 +151,3 @@ let () =
 
 For documentation around the server component of this example, consult the
 [Cohttp](https://github.com/mirage/ocaml-cohttp) project.
-
-### Using the syntax extensions
-
-The syntax extensions in the `Ocamlapi_ppx` ppx rewriter offer a more convenient,
-declarative syntax to declare routes and routers.
-
-```ocaml
-
-module Counter_routes = struct
-
-  let counter = ref 0
-
-  let%route "/counter" =
-    [ `GET, fun args _req _body ->
-              !counter
-              |> string_of_int
-              |> Server.respond_string ]
-
-  let%route "/counter/increment" =
-    [ `POST, fun args _req _body ->
-               counter := !counter + 1;
-               `Code 200
-               |> Server.respond ]
-
-  let%route "/counter/decrement" =
-    [ `POST, fun args _req _body ->
-               counter := !counter - 1;
-               `Code 200
-               |> Server.respond ]
-
-end
-
-let exn_handler _ =
-    Server.respond_string ~status:(`Code 500) "Internal server error"
-
-let%router r = [ Counter_routes ], exn_handler
-
-```
-
-Here, a route is declared with the url path on the left, and a list of
-(HTTP method, callback) pairs on the right. *Note*: any expression with the correct type can be used as the callback. The callback doesn't necessarily have to be a lambda as in this example.
-
-The router declaration takes a list of module names with routes declared within
-them.
