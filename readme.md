@@ -15,7 +15,6 @@ Ocamlapi has 4 separately installable libraries:
 * [ocamlapi](https://opam.ocaml.org/packages/ocamlapi/): Core functors for the library.
 * [ocamlapi_async](https://opam.ocaml.org/packages/ocamlapi_async/): An implementation of ocamlapi using the `Cohttp-async` backend.
 * [ocamlapi_lwt_unix](https://opam.ocaml.org/packages/ocamlapi_lwt_unix/): An implmentation of ocamlapi using the `Cohttp-lwt-unix` backend.
-* [ocamlapi_ppx](https://opam.ocaml.org/packages/ocamlapi_ppx/): Syntax extensions. These eliminate boilerplate when creating routes.
 
 Each library is installable through [opam](https://opam.ocaml.org/):
 
