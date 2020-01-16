@@ -37,9 +37,9 @@ let expand_router_str = Context_free.Rule.extension router_extension_str
 
 let expand_router ~loc router_id module_names error_handler exp =
     let open Ast_builder.Default in
-    if module_names = []
-    then failwith "Cannot create a router with empty list of modules"
-    else
+    match module_names with
+    | [] -> failwith "Cannot create a router with empty list of modules"
+    | _ :: _ ->
         let routes_list = List.map ~f:(fun module_name ->
                                            pexp_ident
                                            ~loc

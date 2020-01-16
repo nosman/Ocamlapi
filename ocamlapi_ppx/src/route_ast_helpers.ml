@@ -60,9 +60,9 @@ let route_nodes_expander = object (self)
                          let s_i', ids' = self#structure_item s_i ids in
                          s_i'::s', ids')
                 ~init:([], []) in
-        if ids = []
-        then s', acc
-        else
+        match ids with
+        | [] -> s', acc
+        | _ :: _ ->
             let open Ast_builder.Default in
             let loc = !Ast_helper.default_loc in
             let route_ids = List.map

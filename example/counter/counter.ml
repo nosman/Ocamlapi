@@ -19,7 +19,7 @@ let start_server port () =
                         >>= fun _ -> Deferred.never ()
 
 let () =
-    let module Command = Async_extra.Command in
+    let module Command = Async.Command in
         Command.async_spec
                 ~summary:"Start a hello world Async server"
                 Command.Spec.(

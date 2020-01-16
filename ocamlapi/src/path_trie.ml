@@ -7,7 +7,7 @@ let slash = Re2.create_exn "/"
 
 let segments path =
     Re2.split slash path
-    |> List.filter ~f:(fun s -> s <> "")
+    |> List.filter ~f:(fun s -> not (String.equal s ""))
 
 let trailing_segments path =
     Re2.split slash path
